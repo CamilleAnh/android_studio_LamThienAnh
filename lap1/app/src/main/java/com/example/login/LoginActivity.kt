@@ -27,7 +27,8 @@ class LoginActivity : AppCompatActivity() {
             val intent =Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
-        binding.loginButton.setOnClickListener {
+       binding.loginButton.setOnClickListener {
+
 
             val email = binding.loginEmail.text.toString()
             val password = binding.loginPassword.text.toString()
