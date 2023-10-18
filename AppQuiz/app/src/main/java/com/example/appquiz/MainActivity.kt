@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val btnStart: Button = findViewById(R.id.btnStart)
         val etName: EditText = findViewById(R.id.etName)
-        val btnAddQuestion: Button = findViewById(R.id.btnAdd)
+        val btnMenu: Button = findViewById(R.id.btnMenu)
         btnStart.setOnClickListener{
             if (etName.text.isEmpty()){
                 Toast.makeText(this, "Please Enter Your Name", Toast.LENGTH_LONG).show()
@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
-        btnAddQuestion.setOnClickListener{
-            val intent = Intent (this, AddQuestion::class.java)
+        btnMenu.setOnClickListener{
+            val intent = Intent (this, Admin_Cofing_Question::class.java)
             startActivity(intent)
             finish()
         }
