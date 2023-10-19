@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditQuestion"
+    android:orientation="vertical"
+    android:background="@drawable/app_bg"
+    android:gravity="center_vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Chỉnh Sửa Câu Hỏi"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/etIdToEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập ID câu hỏi cần chỉnh sửa"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:id="@+id/etNewQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Câu hỏi mới" />
+
+            <EditText
+                android:id="@+id/etNewOption1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lựa chọn 1" />
+
+            <EditText
+                android:id="@+id/etNewOption2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lựa chọn 2" />
+
+            <EditText
+                android:id="@+id/etNewOption3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lựa chọn 3" />
+
+            <EditText
+                android:id="@+id/etNewOption4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Lựa chọn 4" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/etNewCorrectAnswer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Câu trả lời đúng (ID)" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnEditQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chỉnh sửa câu hỏi" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
