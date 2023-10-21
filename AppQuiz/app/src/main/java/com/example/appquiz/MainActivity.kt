@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, QuizQuestionsActivity::class.java)
                     intent.putExtra(Constants.USER_NAME, etName.text.toString())
                     startActivity(intent)
-                    finish()
+
                 }
 
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         btnMenu.setOnClickListener{
             val intent = Intent (this, Admin_Cofing_Question::class.java)
             startActivity(intent)
-            finish()
+
         }
 
 

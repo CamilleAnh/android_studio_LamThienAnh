@@ -19,17 +19,17 @@ class Admin_Cofing_Question : AppCompatActivity() {
         btnAddQuestion.setOnClickListener{
             val intent = Intent (this, AddQuestion::class.java)
             startActivity(intent)
-            finish()
+
         }
         btnDelete.setOnClickListener{
             val intent = Intent (this, DeleteQuestion::class.java)
             startActivity(intent)
-            finish()
+
         }
         btnEditQuestion.setOnClickListener{
             val intent = Intent (this, EditQuestion::class.java)
             startActivity(intent)
-            finish()
+
         }
     }
 }
