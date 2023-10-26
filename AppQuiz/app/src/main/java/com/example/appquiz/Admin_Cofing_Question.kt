@@ -16,6 +16,7 @@ class Admin_Cofing_Question : AppCompatActivity() {
         val btnEditQuestion: Button = findViewById(R.id.btnEdit)
         val btnDelete: Button = findViewById(R.id.btnDelete)
 
+
         btnAddQuestion.setOnClickListener{
             val intent = Intent (this, AddQuestion::class.java)
             startActivity(intent)
@@ -31,5 +32,7 @@ class Admin_Cofing_Question : AppCompatActivity() {
             startActivity(intent)
 
         }
+
+
     }
 }

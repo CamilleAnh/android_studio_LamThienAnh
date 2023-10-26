@@ -1,21 +1,22 @@
 package com.example.appquiz
 
+import Question
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.google.firebase.database.*
 
 class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
+
 
     private var mCurrentPosition: Int = 1
     private var mQuestionsList: ArrayList<Question>? = null
@@ -23,10 +24,10 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mUserName: String? = null
     private var mCorrectAnswers: Int = 0
 
+
     private var progressBar: ProgressBar? = null
     private var tvProgress: TextView? = null
     private var tvQuestion: TextView? = null
-    private var ivImage: ImageView? = null
 
     private var tvOptionOne: TextView? = null
     private var tvOptionTwo: TextView? = null
@@ -35,8 +36,12 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var btnSubmit: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_questions)
+        //mQuestionsList = intent.getParcelableArrayListExtra(Constants.QUESTIONS_LIST)
 
         mUserName = intent.getStringExtra(Constants.USER_NAME)
 
@@ -49,7 +54,9 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         tvOptionFour = findViewById(R.id.optionFour)
         btnSubmit = findViewById(R.id.btnSubmit)
 
-        mQuestionsList = Constants.getQuestions()
+
+        mQuestionsList = Constants.questionsList
+
 
         tvOptionOne?.setOnClickListener(this)
         tvOptionTwo?.setOnClickListener(this)
@@ -60,13 +67,15 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         setQuestion()
     }
 
+
+
     private fun setQuestion() {
         defaultOptionViews()
 
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
 
         progressBar?.progress = mCurrentPosition
-        tvProgress?.text = "${mCurrentPosition} / ${progressBar?.max}"
+        tvProgress?.text = "${mCurrentPosition} / ${mQuestionsList!!.size}"
         tvQuestion?.text = question.question
         tvOptionOne?.text = question.optionOne
         tvOptionTwo?.text = question.optionTwo
@@ -163,13 +172,13 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
                         }
                     }
                 } else {
-                    val question = mQuestionsList?.get(mCurrentPosition - 1)
-                    if (question!!.correctAnswer != mSelectedOptionPosition) {
+                    val question1 = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question1!!.correctAnswer != mSelectedOptionPosition) {
                         answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
                     } else {
                         mCorrectAnswers++
                     }
-                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+                    answerView(question1.correctAnswer, R.drawable.correct_option_border_bg)
 
                     if (mCurrentPosition == mQuestionsList!!.size) {
                         btnSubmit?.text = "FINISH"
@@ -183,7 +192,7 @@ class QuizQuestionsActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun answerView(answer: Int, drawableView: Int) {
+    private fun answerView(answer: Int?, drawableView: Int) {
         when (answer) {
             1 -> {
                 tvOptionOne?.background = ContextCompat.getDrawable(
